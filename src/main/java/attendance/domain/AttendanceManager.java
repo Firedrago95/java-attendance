@@ -32,8 +32,9 @@ public class AttendanceManager {
     public Attendance remarkAttendance(String name, LocalDate attendanceDate, LocalTime attendanceTime) {
         attendanceBooks.validateNameExists(name);
         attendanceBooks.hasAttendance(name, attendanceDate);
-        attendanceBooks.addAttendance(name, new Attendance(attendanceDate, attendanceTime));
-        return new Attendance(attendanceDate, attendanceTime);
+        Attendance attendance = new Attendance(attendanceDate, attendanceTime);
+        attendanceBooks.addAttendance(name, attendance);
+        return attendance;
     }
 
     public Attendance editAttendance(String name, LocalDate editAttendanceDate, LocalTime editAttendanceTime) {
